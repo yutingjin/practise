@@ -1,14 +1,10 @@
 {
-  "name": "ymobile",
+  "name": "p3",
   "version": "1.0.0",
-  "description": "ymobile",
+  "description": "p3",
   "private": true,
   "directories": {
     "test": "tests"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:oceanwing/y.git"
   },
   "scripts": {
     "build": "webpack --progress --colors --watch",
@@ -16,7 +12,7 @@
     "dev": "webpack-dev-server -devtool eval --colors --hot --inline  --content-base public",
     "test": "webpack --config webpack.test.config.js --target node; mocha ./assets/test/test.js"
   },
-  "author": "Haibin Yu",
+  "author": "Yuting Jin",
   "license": "UNLICENSED",
   "devDependencies": {
     "autoprefixer-loader": "^3.1.0",

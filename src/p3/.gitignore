@@ -2,6 +2,7 @@
 .idea
 
 node_modules
+public
 *.debug
 *.js.map
 *.css.map
