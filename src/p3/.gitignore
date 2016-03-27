@@ -1,0 +1,10 @@
+
+.idea
+
+node_modules
+*.debug
+*.js.map
+*.css.map
+*.min.map
+.sass-cache
+p3
