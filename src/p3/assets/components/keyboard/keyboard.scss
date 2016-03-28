@@ -1,0 +1,106 @@
+@import "../global/variables";
+
+$height: 160px;
+$lgHeight: 180px;
+$xlHeight: 280px;
+
+.kb-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  align-content: center;
+  background-color: #D5D8DB;
+  user-select: none;
+}
+
+.abc-kb {
+  padding: 8px 0 2px;
+}
+
+.kb {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &-num {
+    padding: 0;
+    border-top: none;
+
+    .kb-key {
+      line-height: $height/4;
+      height: $height/4;
+      padding: 0;
+      width: 33.333%;
+
+      @media (min-height: 736px) {
+        height: $lgHeight/4;
+        line-height: $lgHeight/4;
+      }
+
+      @media (min-height: 900px) {
+        height: $xlHeight/4;
+        line-height: $xlHeight/4;
+        font-size: 1.5em;
+      }
+
+      &--inner {
+        box-shadow: 1px 1px 2px rgba(#000, 0.8);
+        border-radius: 0;
+      }
+    }
+  }
+
+  &-key {
+    height: ($height - 10)/3;
+    line-height: 42px;
+    padding: 2px 3px;
+    text-align: center;
+    width: 10%;
+    font-size: 1.2em;
+    transition: all 0.3s ease 0s;
+
+    &--del {
+      width: 15%;
+      font-size: 1.5em;
+    }
+
+    &--switch {
+      width: 15%;
+    }
+
+    &--inner {
+      background-color: #fff;
+      box-shadow: 0 2px 2px rgba(#000, 0.3);
+      border-radius: 4px;
+
+      &--reverse {
+        background-color: #ABB3BC;
+      }
+
+      &--pressed {
+        background-color: #ABB3BC;
+
+        &--reverse {
+          background-color: #FFF;
+        }
+      }
+    }
+
+    @media (min-height: 736px) {
+      height: ($lgHeight - 10px) / 3;
+      line-height: ($lgHeight - 10px) / 3 - 6px;
+      padding: 3px;
+    }
+
+    @media (min-height: 900px) {
+      height: 70px;
+      line-height: 60px;
+      padding: 5px;
+      font-size: 1.5em;
+    }
+
+
+  }
+}

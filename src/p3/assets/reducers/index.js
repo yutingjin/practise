@@ -15,6 +15,14 @@ function message(state, action) {
     return state || null;
 }
 
+function menu(state = false, action) {
+    switch (action.type) {
+        case actionTypes.MENU:
+            return action.menu;
+    }
+    return state;
+}
+
 var router = routerStateReducer;
 
 var rootReducer = combineReducers({

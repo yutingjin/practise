@@ -1,0 +1,113 @@
+@import "variables";
+@import "mixins";
+@import "../vertical_rhythm/vertical-rhythms";
+
+@include establish-baseline();
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $base-fonts;
+  color: #333;
+  background-color: #fff;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0); // Removes the dark touch outlines on links in webkit browsers.
+
+  &:active {
+    color: darken($primary-color, 10%);
+  }
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:    #cfcfcf;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color:    #cfcfcf;
+}
+
+.clearfix {
+  @include clearfix();
+}
+
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+
+.font-large {
+  @include adjust-font-size-to(1.2em);
+}
+
+.content {
+  padding-top: 44px;
+
+  &:before {
+    position: fixed;
+    content: '';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    z-index: -1;
+    background-color: #fff;
+  }
+
+  &--dark {
+    &:before {
+      background-color: $background-color;
+    }
+  }
+}
+
+.bg-gray {
+  background-color: $gray;
+}
+
+.bg-white {
+  background-color: $white;
+}
+
+.bg-circle {
+  border-radius: 50%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: #ccc;
+}
+
+.content-padded {
+  padding: 1rem;
+}
+
+.navy {       color: $navy; }
+.blue {       color: $blue; }
+.aqua {       color: $aqua; }
+.teal {       color: $teal; }
+.olive {      color: $olive; }
+.green {      color: $green; }
+.lime {       color: $lime; }
+.yellow {     color: $yellow; }
+.orange {     color: $orange; }
+.red {        color: $red; }
+.fuchsia {    color: $fuchsia; }
+.purple {     color: $purple; }
+.maroon {     color: $maroon; }
+.white {      color: $white; }
+.silver {     color: $silver; }
+.gray {       color: $gray; }
+.black {      color: $black; }

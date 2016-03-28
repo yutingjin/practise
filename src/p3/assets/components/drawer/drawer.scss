@@ -1,0 +1,63 @@
+@import "../global/variables";
+
+.drawer {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 70%;
+  max-width: 300px;
+  z-index: 100;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: all 0.2s ease-in-out 0s;
+
+  &--open {
+    transform: translateX(0);
+    opacity: 1;
+    box-shadow: 0 0 10px 0 rgba(#000, 0.2);
+  }
+
+  &-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &-item {
+    font-size: 1.2em;
+    line-height: 3em;
+    display: flex;
+    padding-left: 15px;
+    color: $primary-color;
+    &--head {
+      margin-bottom: 1em;
+      line-height: 3.5em;
+    }
+
+    &--logout {
+      margin-top: 1em;
+    }
+
+    &--icon {
+      font-size: 1.3em;
+      display: inline-block;
+      margin-right: 10px;
+      color: $primary-color;
+    }
+    &--title {
+      flex: 1;
+      border-bottom: 1px solid #eee;
+      color: $black;
+
+      &--login {
+        color: $black;
+      }
+
+      &--logout {
+        color: $orange;
+      }
+    }
+  }
+}
