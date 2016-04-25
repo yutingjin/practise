@@ -13,5 +13,7 @@
 <div id="app">
     {{.LayoutContent}}
 </div>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="/assets/common.js"></script>
 </body>
 </html>
