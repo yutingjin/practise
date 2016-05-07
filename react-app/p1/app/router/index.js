@@ -1,5 +1,4 @@
 /* @flow */
-
 import React, {Text, View, Navigator, StyleSheet} from 'react-native';
 import { connect } from 'react-redux';
 import {Router, Route, Schema, Animations} from 'react-native-router-flux';

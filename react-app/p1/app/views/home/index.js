@@ -1,8 +1,8 @@
-import React, {  Component, View } from 'react-native';
+/* @flow weak */
+import React from 'react'
+import { Component, View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { DefaultRenderer } from 'react-native-router-flux';
-
-import styles from './styles';
 
 function mapStateToProps(state) {
     return {
@@ -23,3 +23,15 @@ class Home extends Component {
 }
 
 export default connect(mapStateToProps)(Home);
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: '#EBEEF0'
+    },
+    center: {
+        flex: 0,
+        alignItems: 'center'
+    }
+});

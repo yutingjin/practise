@@ -1,3 +1,4 @@
+/* @flow weak */
 import { combineReducers } from 'redux';
 import { Actions } from 'react-native-router-flux';
 import assign from 'lodash/assign';

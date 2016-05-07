@@ -1,3 +1,4 @@
+/* @flow weak */
 import thunkMiddleware from 'redux-thunk';
 import rootReducer from '../reducers';
 import { createStore, applyMiddleware, compose } from 'redux';

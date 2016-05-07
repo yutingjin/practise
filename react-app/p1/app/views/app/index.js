@@ -1,7 +1,9 @@
-import React, { Component, Text, View, StyleSheet, NetInfo, Image, Dimensions } from 'react-native';
+/* @flow weak */
+import React from 'react'
+import { Component, Text, View, StyleSheet, NetInfo, Image, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import Loading from '../../components/loading';
+//import Loading from '../../components/loading';
 import { menu, isConnected, userGuide } from '../../actions/common';
 
 var { height, width } = Dimensions.get('window');

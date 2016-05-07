@@ -1,15 +1,21 @@
-import React, { Component, View, StyleSheet, Text, TouchableHighlight, Dimensions, Image, Linking} from 'react-native';
+/* @flow weak */
+import React from 'react'
+import { Component, View, StyleSheet, Text, TouchableHighlight, Dimensions, Image, Linking} from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import { connect } from 'react-redux';
-import Loading from '../../components/loading';
+//import Loading from '../../components/loading';
+
+function mapStateToProps(state) {
+    return {
+        global: state.global
+    }
+}
 
 class About extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-        }
-    }
+    state : {
+        version : {}
+    };
 
     componentDidMount() {
     }
@@ -107,11 +113,5 @@ const styles = StyleSheet.create({
         color: '#888'
     },
 });
-
-function mapStateToProps(state) {
-    return {
-        global: state.global
-    }
-}
 
 export default connect(mapStateToProps)(About);
