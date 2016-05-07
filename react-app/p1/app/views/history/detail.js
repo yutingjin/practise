@@ -1,8 +1,8 @@
+/* @flow weak */
 import React, {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
-import OrderDetail from '../../components/order_detail';
 import Message from '../../components/message';
 import variables from '../../components/global/variables';
 import localization from '../../components/localization/localization';
@@ -10,7 +10,6 @@ import PageDivider from '../../components/page_divider';
 import Button from '../../components/button'
 import Dialog from '../../components/dialog';
 import Page from '../../components/page';
-import Link from '../../components/link';
 // import { order, reportLoss } from '../../actions/order';
 import { errorCodes, orderStatuses, paymentStatuses, orderSteps } from '../../actions/action_code';
 import actionTypes from '../../actions/action_types';
@@ -27,14 +26,17 @@ function mapStateToProps(state) {
 
 class Order extends React.Component {
 
-    constructor(props) {
-        super(props);
+    state : {
+        loading: false,
+        error: {}
+    };
 
-        this.state = {
-            loading: false,
-            error: props.error
-        };
-    }
+    // getInitialState() {
+    //     return {
+    //       loading: false,
+    //       error: {}
+    //     };
+    // }
 
     componentDidMount() {
         // this.props.dispatch(order(this.props.session, this.props.orderId))
@@ -49,8 +51,8 @@ class Order extends React.Component {
 
     cancelOrder(){
         let actions = [
-          {name: localization.CANCEL, type: 'default', action: ()=>{console.log('press cancel')}.bind(this, false)},
-          {name: localization.CONFIRM, type: 'primary', action: ()=>{console.log('press ok')}.bind(this)}
+          {name: localization.CANCEL, type: 'default', action: (()=>{console.log('press cancel')}).bind(this)},
+          {name: localization.CONFIRM, type: 'primary', action: (()=>{console.log('press ok')}).bind(this)}
         ];
         return (
             <Dialog

@@ -18,7 +18,6 @@ class About extends Component {
         return (
             <View>
                 <View style={styles.header}>
-                    //<Image source={require('./icon.png')} style={{borderRadius: 6}} />
                     <Text style={styles.headerText}>Title <Text>{this.state.version}</Text></Text>
                 </View>
                 <View style={styles.introContainer}>

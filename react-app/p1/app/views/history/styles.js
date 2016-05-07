@@ -1,3 +1,4 @@
+/* @flow */
 import { StyleSheet } from 'react-native';
 import variables from '../../components/global/variables';
 

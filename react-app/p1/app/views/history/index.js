@@ -1,3 +1,4 @@
+/* @flow*/
 import React, {
     View,
     Text,
@@ -8,7 +9,7 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import InfiniteScrollView from 'react-native-infinite-scroll-view';
-import Loading from '../../components/loading';
+//import Loading from '../../components/loading';
 import ListView from '../../components/list_view';
 import Page from '../../components/page';
 import Card from '../../components/card';
@@ -28,6 +29,7 @@ class History extends Component {
 
     constructor(props) {
         super(props);
+        this.setState({})
     }
 
     componentDidMount() {
@@ -63,9 +65,9 @@ class History extends Component {
     render() {
         //let orders = this.props.orders;
         let orders = {
-          items:{
+          items:[{
             id: 123
-          },
+          }],
           totalCount: 1
         }
 
@@ -81,9 +83,9 @@ class History extends Component {
                     isRefreshable={true}
                     onRefresh={this.loadMore.bind(this, 0)}
                     renderFooter={() => {
-                            if (!!orders.items && this.props.loading) {
-                                return <Loading style={{padding: 14}} />
-                            }
+                            // if (!!orders.items && this.props.loading) {
+                            //     return <Loading style={{padding: 14}} />
+                            // }
                             return null;
                         }}
                     distanceToLoadMore={-10}
