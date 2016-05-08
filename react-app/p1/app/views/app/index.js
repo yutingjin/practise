@@ -25,7 +25,7 @@ class App extends Component {
 //                this.handleConnectivityChange(connected);
 //            }
 //        );
-        setTimeout(Actions.main, 1000);
+        setTimeout(Actions.main, 2000);
     }
 
     componentDidUpdate() {
@@ -42,11 +42,9 @@ class App extends Component {
 
     render() {
         return (
-            // <Image source={require('./splash.png')} style={[styles.container, {width: width, height: height}]}>
-            //     <Loading color="#fff" />
-            // </Image>
             <Page>
-                <Text>Study React Native</Text>
+                <Image source={require('./splash.png')} style={[styles.container, {width: width, height: height}]}>
+                </Image>
             </Page>
         )
     }
