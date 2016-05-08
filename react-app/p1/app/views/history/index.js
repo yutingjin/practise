@@ -56,8 +56,8 @@ class History extends Component {
     renderRow(rowData) {
         let item = rowData;
         return (
-            <Card key={item.order_short_id}>
-              <Text>fdlasjfklasdjflads</Text>
+            <Card key={'card_id'}>
+              <Text>3月3日 预约1诊室 </Text>
             </Card>
         );
     }
@@ -67,8 +67,16 @@ class History extends Component {
         let orders = {
           items:[{
             id: 123
+          },{
+            id: 123
+          },{
+            id: 123
+          },{
+            id: 123
+          },{
+            id: 123
           }],
-          totalCount: 1
+          totalCount: 5
         }
 
         return (

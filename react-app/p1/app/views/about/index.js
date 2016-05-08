@@ -1,4 +1,4 @@
-/* @flow weak */
+/* @flow */
 import React from 'react'
 import { Component, View, StyleSheet, Text, TouchableHighlight, Dimensions, Image, Linking} from 'react-native';
 import DeviceInfo from 'react-native-device-info';
@@ -17,6 +17,13 @@ class About extends Component {
         version : {}
     };
 
+    constructor(props){
+        super(props)
+        this.state = {
+            version : {}
+        }
+    }
+
     componentDidMount() {
     }
 
@@ -24,19 +31,19 @@ class About extends Component {
         return (
             <View>
                 <View style={styles.header}>
-                    <Text style={styles.headerText}>Title <Text>{this.state.version}</Text></Text>
+                    <Text style={styles.headerText}>Version: <Text>{'0.1.0'}</Text></Text>
                 </View>
                 <View style={styles.introContainer}>
-                    <Text style={styles.introTitle}>something</Text>
+                    <Text style={styles.introTitle}>什么什么名字</Text>
                     <View>
-                        <Text style={styles.intro}>something</Text>
-                        <Text style={styles.intro}>something</Text>
-                        <Text style={styles.intro}>something</Text>
-                        <Text style={styles.intro}>something</Text>
+                        <Text style={styles.intro}>做什么的？</Text>
+                        <Text style={styles.intro}>做什么的？</Text>
+                        <Text style={styles.intro}>做什么的？</Text>
+                        <Text style={styles.intro}>做什么的？</Text>
                     </View>
                 </View>
                 <View style={styles.footer}>
-                    <Text style={styles.copyright}>footer</Text>
+                    <Text style={styles.copyright}>说些什么</Text>
                 </View>
             </View>
         )
