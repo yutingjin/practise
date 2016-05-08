@@ -7,7 +7,7 @@ import App from '../views/app';
 import Home from '../views/home';
 import History from '../views/history';
 import About from '../views/about';
-import PlaceHolder from '../views/placeHolder';
+import Info from '../views/info';
 import SideDrawer from '../components/drawer';
 import { menu, reset } from '../actions/common';
 import BarTitle from '../components/navbar/bar_title';
@@ -49,9 +49,9 @@ class AppRouter extends React.Component {
                             barButtonTextStyle={{opacity: 0}}
                             barButtonIconStyle={{tintColor: '#fff'}}
                         >
-                            <Route name="info" component={PlaceHolder} type="push" title="个人资料" hideNavBar={true} initial={true}/>
-                            <Route name="medicalRecord" component={About} type="push" title="病历" hideNavBar={true}/>
-                            <Route name="appointment" component={About} type="push" title="预约" hideNavBar={true}/>
+                            <Route name="info" component={Info} type="push" title="个人资料" hideNavBar={false} initial={true}/>
+                            <Route name="medicalRecord" component={About} type="push" title="病历" hideNavBar={false}/>
+                            <Route name="appointment" component={About} type="push" title="预约" hideNavBar={false}/>
                             <Route
                                 name="home"
                                 component={About}

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 //import Loading from '../../components/loading';
 import { menu, isConnected, userGuide } from '../../actions/common';
+import Page from '../../components/page';
 
 var { height, width } = Dimensions.get('window');
 
@@ -44,7 +45,9 @@ class App extends Component {
             // <Image source={require('./splash.png')} style={[styles.container, {width: width, height: height}]}>
             //     <Loading color="#fff" />
             // </Image>
-            <Text>Study React Native</Text>
+            <Page>
+                <Text>Study React Native</Text>
+            </Page>
         )
     }
 }
