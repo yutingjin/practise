@@ -30,7 +30,6 @@ class History extends Component {
 
     constructor(props) {
         super(props);
-        this.setState({})
     }
 
     componentDidMount() {

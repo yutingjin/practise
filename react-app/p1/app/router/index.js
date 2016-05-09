@@ -21,9 +21,8 @@ class AppRouter extends React.Component {
     }
 
     renderLeftButton() {
-            //<Icon.Button name="android-menu" backgroundColor="#424c53" size={28} style={{paddingLeft: 10}} onPress={this.openMenu.bind(this)} />
         return (
-            <Text>Left Button</Text>
+            <Icon.Button name="android-menu" backgroundColor="#424c53" size={28} style={{paddingLeft: 10}} onPress={this.openMenu.bind(this)} />
         )
     }
 
@@ -49,29 +48,26 @@ class AppRouter extends React.Component {
                             barButtonTextStyle={{opacity: 0}}
                             barButtonIconStyle={{tintColor: '#fff'}}
                         >
-                            <Route name="info" component={Info} type="push" title="个人资料" hideNavBar={false} initial={true}/>
-                            <Route name="medicalRecord" component={About} type="push" title="病历" hideNavBar={false}/>
-                            <Route name="appointment" component={About} type="push" title="预约" hideNavBar={false}/>
+                            <Route name="about" component={About} type="push" title="about"/>
                             <Route
                                 name="home"
                                 component={About}
                                 schema="drawer"
-
-                                hideNavBar={true}
+                                initial={true}
                                 renderTitle={(route) => {
                                     if (route.props.router.delegate.state != null) {
                                         if (route.props.router.delegate.state.title) {
                                             return route.props.router.delegate.state.title;
                                         }
                                     }
-                                    return <BarTitle title="bar title" />;
+                                    return <BarTitle title="XXXXXXXX" />;
                                 }}
                                 renderLeftButton={(route) => {
-                                        if (route.props.router.delegate.state != null) {
-                                            if (route.props.router.delegate.state.downButton) {
-                                                return route.props.router.delegate.state.downButton;
-                                            }
-                                        }
+                                        // if (route.props.router.delegate.state != null) {
+                                        //     if (route.props.router.delegate.state.downButton) {
+                                        //         return route.props.router.delegate.state.downButton;
+                                        //     }
+                                        // }
                                         return this.renderLeftButton();
                                     }
                                 }
@@ -81,6 +77,10 @@ class AppRouter extends React.Component {
                 </Route>
                 <Route name="history" component={History} type="push" title="History"/>
                 <Route name="about" component={About} type="push" title="about"/>
+                <Route name="info" component={Info} type="push" title="个人资料"/>
+                <Route name="appointment" component={About} type="push" title="预约"/>
+                <Route name="medicalRecord" component={About} type="push" title="病历"/>
+
             </ReduxRouter>
         )
     }
