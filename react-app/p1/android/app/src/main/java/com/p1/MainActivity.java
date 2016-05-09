@@ -1,6 +1,10 @@
 package com.p1;
 
 import com.facebook.react.ReactActivity;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.AirMaps.AirPackage;
+import com.aakashns.reactnativedialogs.ReactNativeDialogsPackage;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 
@@ -34,7 +38,11 @@ public class MainActivity extends ReactActivity {
     @Override
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
-            new MainReactPackage()
+            new MainReactPackage(),
+            new VectorIconsPackage(),
+            new AirPackage(),
+            new ReactNativeDialogsPackage(),
+            new RNDeviceInfo()
         );
     }
 }

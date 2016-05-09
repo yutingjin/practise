@@ -8,6 +8,7 @@ import Home from '../views/home';
 import History from '../views/history';
 import About from '../views/about';
 import Info from '../views/info';
+import Me from '../views/me';
 import SideDrawer from '../components/drawer';
 import { menu, reset } from '../actions/common';
 import BarTitle from '../components/navbar/bar_title';
@@ -51,7 +52,7 @@ class AppRouter extends React.Component {
                             <Route name="about" component={About} type="push" title="about"/>
                             <Route
                                 name="home"
-                                component={About}
+                                component={History}
                                 schema="drawer"
                                 initial={true}
                                 renderTitle={(route) => {
@@ -77,6 +78,7 @@ class AppRouter extends React.Component {
                 </Route>
                 <Route name="history" component={History} type="push" title="History"/>
                 <Route name="about" component={About} type="push" title="about"/>
+                <Route name="me" component={Me} type="push" title="我"/>
                 <Route name="info" component={Info} type="push" title="个人资料"/>
                 <Route name="appointment" component={About} type="push" title="预约"/>
                 <Route name="medicalRecord" component={About} type="push" title="病历"/>

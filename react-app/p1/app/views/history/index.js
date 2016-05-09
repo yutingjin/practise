@@ -12,6 +12,7 @@ import Page from '../../components/page';
 import Card from '../../components/card';
 import { errorCodes, orderStatuses, paymentStatuses } from '../../actions/action_code';
 import styles from './styles';
+import orderList from './orderList'
 
 function mapStateToProps(state) {
     return {
@@ -60,48 +61,17 @@ class History extends Component {
 
     render() {
         //let orders = this.props.orders;
-        let orders = {
-          items:[{
-            id: 123,
-            title: 'mock title',
-            desc: 'mock desc',
-            time: 123456,
-            status: 'Cancelled'
-          },{
-            id: 123,
-            title: 'mock title',
-            desc: 'mock desc',
-            time: 123456,
-            status: 'Cancelled'
-          },{
-            id: 123,
-            title: 'mock title',
-            desc: 'mock desc',
-            time: 123456,
-            status: 'Cancelled'
-          },{
-            id: 123,
-            title: 'mock title',
-            desc: 'mock desc',
-            time: 123456,
-            status: 'Cancelled'
-          }],
-          totalCount: 5
-        }
-
         return (
             <Page>
                 <ListView
                     renderRow={this.renderRow.bind(this)}
                     renderScrollComponent={props => <InfiniteScrollView {...props} />}
-                    dataSource={orders.items || []}
-                    canLoadMore={!this.props.loading && orders.totalCount > (orders.items ||[]).length}
-                    isLoadingMore={this.props.loading && orders.totalCount > (orders.items ||[]).length}
+                    dataSource={orderList || []}
                     onLoadMoreAsync={this.loadMore.bind(this)}
                     isRefreshable={true}
                     onRefresh={this.loadMore.bind(this, 0)}
                     renderFooter={() => {
-                            // if (!!orders.items && this.props.loading) {
+                            // if (!!orderList && this.props.loading) {
                             //     return <Loading style={{padding: 14}} />
                             // }
                             return null;

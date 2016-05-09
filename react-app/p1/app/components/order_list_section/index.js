@@ -31,7 +31,7 @@ class OrderSection extends Component {
                             </Text>
                         </View>
                         <View style={styles.horizontal}>
-                            <Text numberOfLines={1} style={styles.address}>{order.desc}</Text>
+                            <Text numberOfLines={1} style={styles.address}>{order.content}</Text>
                         </View>
                     </View>
                 </View>

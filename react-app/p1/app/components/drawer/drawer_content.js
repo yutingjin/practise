@@ -27,6 +27,15 @@ class DrawerContent extends Component {
         this.context.drawer.close()
     }
 
+    message() {
+        //
+    }
+
+    me() {
+        Actions.me();
+        this.context.drawer.close()
+    }
+
     record(){
       //
     }
@@ -46,11 +55,11 @@ class DrawerContent extends Component {
                 </View>
 
                 <View style={styles.drawerList}>
-                    <TouchableHighlight onPress={this.info.bind(this)} underlayColor='#E2E2E2'>
-                        <View style={styles.drawerItem}>
+                    <TouchableHighlight onPress={this.me.bind(this)} underlayColor='#E2E2E2'>
+                        <View style={[styles.drawerItem, styles.about]}>
                             <Image source={require('./images/home.png')} style={styles.drawerItemIcon} />
-                            <View style={styles.drawerItemTitle}>
-                                <Text style={styles.titleText}>个人资料</Text>
+                            <View style={[styles.drawerItemTitle, styles.aboutTitle]}>
+                                <Text style={styles.titleText}>我的</Text>
                             </View>
                         </View>
                     </TouchableHighlight>
@@ -67,6 +76,14 @@ class DrawerContent extends Component {
                             <Image source={require('./images/history.png')} style={styles.drawerItemIcon} />
                             <View style={[styles.drawerItemTitle, styles.aboutTitle]}>
                                 <Text style={styles.titleText}>预约记录</Text>
+                            </View>
+                        </View>
+                    </TouchableHighlight>
+                    <TouchableHighlight onPress={this.message.bind(this)} underlayColor='#E2E2E2'>
+                        <View style={[styles.drawerItem, styles.about]}>
+                            <Image source={require('./images/history.png')} style={styles.drawerItemIcon} />
+                            <View style={[styles.drawerItemTitle, styles.aboutTitle]}>
+                                <Text style={styles.titleText}>消息</Text>
                             </View>
                         </View>
                     </TouchableHighlight>
