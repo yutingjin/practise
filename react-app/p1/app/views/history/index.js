@@ -10,6 +10,7 @@ import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import InfiniteScrollView from 'react-native-infinite-scroll-view';
 //import Loading from '../../components/loading';
+import OrderSection from '../../components/order_list_section';
 import ListView from '../../components/list_view';
 import Page from '../../components/page';
 import Card from '../../components/card';
@@ -57,7 +58,7 @@ class History extends Component {
         let item = rowData;
         return (
             <Card key={'card_id'}>
-              <Text>3月3日 预约1诊室 </Text>
+                <OrderSection order={item} onPress={()=>{console.log('press section')}}/>
             </Card>
         );
     }
@@ -66,15 +67,29 @@ class History extends Component {
         //let orders = this.props.orders;
         let orders = {
           items:[{
-            id: 123
+            id: 123,
+            title: 'mock title',
+            desc: 'mock desc',
+            time: 123456,
+            status: 'Cancelled'
           },{
-            id: 123
+            id: 123,
+            title: 'mock title',
+            desc: 'mock desc',
+            time: 123456,
+            status: 'Cancelled'
           },{
-            id: 123
+            id: 123,
+            title: 'mock title',
+            desc: 'mock desc',
+            time: 123456,
+            status: 'Cancelled'
           },{
-            id: 123
-          },{
-            id: 123
+            id: 123,
+            title: 'mock title',
+            desc: 'mock desc',
+            time: 123456,
+            status: 'Cancelled'
           }],
           totalCount: 5
         }
