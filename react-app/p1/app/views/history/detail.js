@@ -1,5 +1,6 @@
 /* @flow weak */
-import React, {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import React from 'react'
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';

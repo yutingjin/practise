@@ -1,6 +1,6 @@
-/* @flow */
+/* @flow weak */
 import React from 'react'
-import { Component, View, StyleSheet, Text, TouchableHighlight, Dimensions, Image, Linking} from 'react-native';
+import { Component, View, StyleSheet, Text, TouchableHighlight, Dimensions, Image, Linking, DatePickerIOS} from 'react-native';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
 //import Loading from '../../components/loading';
@@ -14,51 +14,66 @@ const iconSize = width / 5;
 
 function mapStateToProps(state) {
     return {
-        global: state.global
     }
 }
 
-class Info extends Component {
+var Info = React.createClass({
 
-    state : {
+    // state : {
+    //     userId: '',
+    //     userName: '',
+    //     mobileNo: '',
+    //     sex: '',
+    //     birthday: {},
+    // };
+
+    getDefaultProps: function() {
+      return {
+        date: new Date(),
+      };
+    },
+
+    getInitialState: function() {
+      return {
         userId: '',
         userName: '',
         mobileNo: '',
         sex: '',
-        birthday: '',
-    };
+        date: this.props.date,
+      };
+    },
 
-    constructor(props) {
-        super(props);
-    }
+    componentDidMount: function() {
+        // this.setState({
+        //     userId: '',
+        //     userName: '',
+        //     mobileNo: '',
+        //     sex: '',
+        //     date: {},
+        // })
+    },
 
-    componentDidMount() {
-        this.setState({
-            userId: '',
-            userName: '',
-            mobileNo: '',
-            sex: '',
-            birthday: '',
-        })
-    }
+    placeholder: function(){
 
-    placeholder(){
+    },
 
-    }
-
-    onNameChange(event){
+    onNameChange: function(event){
       this.setState({
           userName: event.nativeEvent.text
       });
-    }
+    },
 
-    onMobileNoChange(event){
+    onMobileNoChange: function(event){
       this.setState({
           mobileNo: event.nativeEvent.text
       })
-    }
+    },
 
-    render() {
+    onDateChange: function(date){
+      this.setState({date: date});
+    },
+
+    render: function() {
         let state = this.state ? this.state : {};
         return (
           <Page>
@@ -111,12 +126,10 @@ class Info extends Component {
                         <Icon name={'ios-telephone'} size={40} color={'gray'} />
                     </View>
                     <View style={{flex: 2}}>
-                        <TextInput
-                            keyboardType="phone-pad"
-                            placeholder="出生日期"
-                            value={state.birthday}
-                            onChange={this.placeholder.bind(this)}
-                            onBlur={this.placeholder.bind(this)}
+                        <DatePickerIOS
+                            date={this.state.date}
+                            mode="date"
+                            onDateChange={this.onDateChange.bind(this)}
                         />
                     </View>
                 </View>
@@ -125,7 +138,7 @@ class Info extends Component {
           </Page>
         )
     }
-}
+})
 
 export default connect(mapStateToProps)(Info);
 

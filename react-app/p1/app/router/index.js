@@ -1,4 +1,4 @@
-/* @flow */
+/* @flow weak */
 import React, {Text, View, Navigator, StyleSheet} from 'react-native';
 import { connect } from 'react-redux';
 import {Router, Route, Schema, Animations} from 'react-native-router-flux';
@@ -60,7 +60,7 @@ class AppRouter extends React.Component {
                                             return route.props.router.delegate.state.title;
                                         }
                                     }
-                                    return <BarTitle title="XXXXXXXX" />;
+                                    return <BarTitle title="XXXXXXX" />;
                                 }}
                                 renderLeftButton={(route) => {
                                         // if (route.props.router.delegate.state != null) {
