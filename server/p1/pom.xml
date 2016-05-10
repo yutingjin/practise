@@ -14,6 +14,37 @@
             <artifactId>spark-core</artifactId>
             <version>2.5</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.sparkjava</groupId>-->
+            <!--<artifactId>spark-debug-tools</artifactId>-->
+            <!--<version>0.5</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>19.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.sql2o</groupId>
+            <artifactId>sql2o</artifactId>
+            <version>1.5.4</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.6</version>
+        </dependency>
     </dependencies>
 
     <build>
