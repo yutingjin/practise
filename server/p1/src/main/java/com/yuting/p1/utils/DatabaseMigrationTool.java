@@ -1,6 +1,6 @@
 package com.yuting.p1.utils;
 
-import com.yuting.p1.constants.DBConstants;
+import com.yuting.p1.constants.Constants;
 import org.flywaydb.core.Flyway;
 
 /**
@@ -13,7 +13,7 @@ public class DatabaseMigrationTool {
 
     public DatabaseMigrationTool() {
         this.flyway = new Flyway();
-        this.flyway.setDataSource(DBConstants.DATABASE_URL, DBConstants.USER, DBConstants.PASSWORD);
+        this.flyway.setDataSource(Constants.DATABASE_URL, Constants.USER, Constants.PASSWORD);
     }
 
     public void migrate() {

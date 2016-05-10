@@ -1,6 +1,6 @@
 package com.yuting.p1.dao;
 
-import com.yuting.p1.constants.DBConstants;
+import com.yuting.p1.constants.Constants;
 import com.yuting.p1.model.User;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
@@ -18,7 +18,7 @@ public class Dao {
     }
 
     public Sql2o newConnection() {
-        return new Sql2o(DBConstants.DATABASE_URL, DBConstants.USER, DBConstants.PASSWORD);
+        return new Sql2o(Constants.DATABASE_URL, Constants.USER, Constants.PASSWORD);
     }
 
     public User getUser(String id) {

@@ -2,7 +2,7 @@ package com.yuting.p1;
 
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
-import com.yuting.p1.constants.DBConstants;
+import com.yuting.p1.constants.Constants;
 import com.yuting.p1.dao.Dao;
 import com.yuting.p1.model.User;
 import org.junit.Assert;
@@ -24,7 +24,7 @@ public class DatabaseTest {
     public void testLoadAllUsers() {
         String sql = "select uuid, mobile, password from user";
         List<User> users;
-        Sql2o userDb = new Sql2o(DBConstants.DATABASE_URL, DBConstants.USER, DBConstants.PASSWORD);
+        Sql2o userDb = new Sql2o(Constants.DATABASE_URL, Constants.USER, Constants.PASSWORD);
         try (Connection con = userDb.open()) {
             users = con.createQuery(sql).addColumnMapping("uuid", "userId").executeAndFetch(User.class);
         }
