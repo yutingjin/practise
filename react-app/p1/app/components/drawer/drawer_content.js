@@ -37,7 +37,9 @@ class DrawerContent extends Component {
     }
 
     record(){
-      //
+        console.log("Push to records")
+        Actions.records();
+        this.context.drawer.close();
     }
 
     render() {
@@ -81,7 +83,7 @@ class DrawerContent extends Component {
                     </TouchableHighlight>
                     <TouchableHighlight onPress={this.message.bind(this)} underlayColor='#E2E2E2'>
                         <View style={[styles.drawerItem, styles.about]}>
-                            <Image source={require('./images/history.png')} style={styles.drawerItemIcon} />
+                            <Image source={require('../../images/icon_message_pre.png')} style={styles.drawerItemIcon} />
                             <View style={[styles.drawerItemTitle, styles.aboutTitle]}>
                                 <Text style={styles.titleText}>消息</Text>
                             </View>

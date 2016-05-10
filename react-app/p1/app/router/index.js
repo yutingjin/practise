@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import App from '../views/app';
 import Home from '../views/home';
 import History from '../views/history';
+import Records from '../views/record';
 import About from '../views/about';
 import Info from '../views/info';
 import Me from '../views/me';
@@ -61,7 +62,7 @@ class AppRouter extends React.Component {
                                             return route.props.router.delegate.state.title;
                                         }
                                     }
-                                    return <BarTitle title="XXXXXXX" />;
+                                    return <BarTitle title="预约记录" />;
                                 }}
                                 renderLeftButton={(route) => {
                                         // if (route.props.router.delegate.state != null) {
@@ -76,7 +77,8 @@ class AppRouter extends React.Component {
                         </Router>
                     </SideDrawer>
                 </Route>
-                <Route name="history" component={History} type="push" title="History"/>
+                <Route name="history" component={History} type="push" title="预约记录"/>
+                <Route name="records" component={Records} type="push" title="病历"/>
                 <Route name="about" component={About} type="push" title="about"/>
                 <Route name="me" component={Me} type="push" title="我"/>
                 <Route name="info" component={Info} type="push" title="个人资料"/>
