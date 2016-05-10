@@ -2,6 +2,8 @@ package com.yuting.p1;
 
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
+import com.yuting.p1.constants.DBConstants;
+import com.yuting.p1.dao.Dao;
 import com.yuting.p1.model.User;
 import org.junit.Assert;
 import org.junit.Test;
@@ -22,14 +24,21 @@ public class DatabaseTest {
     public void testLoadAllUsers() {
         String sql = "select uuid, mobile, password from user";
         List<User> users;
-        Sql2o userDb = new Sql2o("jdbc:mysql://192.168.99.100:3306/yuser", "root", "123456");
+        Sql2o userDb = new Sql2o(DBConstants.USER_DATABASE_URL, DBConstants.USER, DBConstants.PASSWORD);
         try (Connection con = userDb.open()) {
             users = con.createQuery(sql).executeAndFetch(User.class);
         }
 
         Assert.assertTrue(!Lists.newArrayList(users).isEmpty());
-        users.stream().forEach((item) -> {
-            System.out.printf("%s\n", gson.toJson(item));
-        });
+        users.stream().forEach((item) -> System.out.printf("%s\n", gson.toJson(item)));
+    }
+
+    @Test
+    public void testGetUser() {
+        String id = "60000001";
+        User user = new Dao().getUser(id);
+        Assert.assertNotNull(user);
+        System.out.printf("%s", gson.toJson(user));
+        Assert.assertEquals(user.getUuid(), id);
     }
 }
