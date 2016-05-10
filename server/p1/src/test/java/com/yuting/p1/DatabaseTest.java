@@ -24,9 +24,9 @@ public class DatabaseTest {
     public void testLoadAllUsers() {
         String sql = "select uuid, mobile, password from user";
         List<User> users;
-        Sql2o userDb = new Sql2o(DBConstants.USER_DATABASE_URL, DBConstants.USER, DBConstants.PASSWORD);
+        Sql2o userDb = new Sql2o(DBConstants.DATABASE_URL, DBConstants.USER, DBConstants.PASSWORD);
         try (Connection con = userDb.open()) {
-            users = con.createQuery(sql).executeAndFetch(User.class);
+            users = con.createQuery(sql).addColumnMapping("uuid", "userId").executeAndFetch(User.class);
         }
 
         Assert.assertTrue(!Lists.newArrayList(users).isEmpty());

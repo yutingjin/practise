@@ -18,7 +18,7 @@ public class Dao {
     }
 
     public Sql2o newConnection() {
-        return new Sql2o(DBConstants.USER_DATABASE_URL, DBConstants.USER, DBConstants.PASSWORD);
+        return new Sql2o(DBConstants.DATABASE_URL, DBConstants.USER, DBConstants.PASSWORD);
     }
 
     public User getUser(String id) {

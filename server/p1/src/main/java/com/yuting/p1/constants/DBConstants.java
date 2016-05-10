@@ -6,7 +6,7 @@ package com.yuting.p1.constants;
  */
 public class DBConstants {
 
-    public static String USER_DATABASE_URL = "jdbc:mysql://192.168.99.100:3306/yuser";
+    public static String DATABASE_URL = "jdbc:mysql://192.168.99.100:3306/p1";
 
     public static String USER = "root";
 
