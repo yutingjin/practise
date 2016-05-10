@@ -9,16 +9,26 @@ import org.flywaydb.core.Flyway;
  */
 public class DatabaseMigrationTool {
 
+    private Flyway flyway;
+
+    public DatabaseMigrationTool() {
+        this.flyway = new Flyway();
+        this.flyway.setDataSource(DBConstants.DATABASE_URL, DBConstants.USER, DBConstants.PASSWORD);
+    }
+
+    public void migrate() {
+        this.flyway.migrate();
+    }
+
+    public void clean() {
+        this.flyway.clean();
+    }
+
+    public void repair() {
+        this.flyway.repair();
+    }
+
     public static void main(String... args) {
-
-        Flyway flyway = new Flyway();
-        flyway.setDataSource(DBConstants.DATABASE_URL, DBConstants.USER, DBConstants.PASSWORD);
-
-        // Clean the database if checksum not matched
-        //flyway.clean();
-
-        //flyway.baseline();
-
-        flyway.migrate();
+        new DatabaseMigrationTool().migrate();
     }
 }
