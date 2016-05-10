@@ -39,6 +39,6 @@ public class DatabaseTest {
         User user = new Dao().getUser(id);
         Assert.assertNotNull(user);
         System.out.printf("%s", gson.toJson(user));
-        Assert.assertEquals(user.getUuid(), id);
+        Assert.assertEquals(user.getUserId(), id);
     }
 }

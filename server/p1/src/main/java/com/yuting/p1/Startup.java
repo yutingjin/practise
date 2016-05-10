@@ -6,6 +6,8 @@ public class Startup {
 
     public static void main(String... args) {
         System.out.println("Startup...");
-        new Router().route();
+
+        new Router().initBefore().initAfter().handleException().route();
     }
+
 }

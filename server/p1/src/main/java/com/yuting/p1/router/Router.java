@@ -1,6 +1,8 @@
 package com.yuting.p1.router;
 
 import com.google.gson.Gson;
+import com.yuting.p1.controller.UserController;
+import com.yuting.p1.model.User;
 import org.eclipse.jetty.http.HttpStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,42 +15,52 @@ import static spark.Spark.*;
  */
 public class Router {
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    final private Logger logger = LoggerFactory.getLogger(getClass());
 
     private Gson gson = new Gson();
 
-    public void route() {
+    private UserController userController = new UserController();
+
+    public Router initBefore() {
         // enable the spark java error page
         //spark.debug.DebugScreen.enableDebugScreen();
 
-        before((request, response) -> {
-            boolean authenticated = false;
-
-            // TODO validate
-
-            if (!authenticated) {
-                halt(HttpStatus.FORBIDDEN_403, "User not authenticated!");
+        before("/api/*", (request, response) -> {
+            if (request.session().attribute("userId") == null) {
+                halt(HttpStatus.FORBIDDEN_403, "Please login first!");
             }
-
         });
 
+        return this;
+    }
+
+    public Router initAfter() {
         after((request, response) -> logger.info("After filter %s", request.toString()));
 
-        get("/hello", (req, res) -> "Hello World", gson::toJson);
+        return this;
+    }
 
-        post("shutdown", (req, res) -> {
-            stop();
-            return null;
-        });
+    public Router handleException() {
+        logger.debug("debug");
 
-        get("/exception", (req, res) -> {
+        exception(Exception.class, ((exception, request, response) -> exception.printStackTrace()));
+
+        return this;
+    }
+
+    public Router route() {
+
+        get("/api/hello", (req, res) -> req.session().attribute("userId"), gson::toJson);
+
+        get("/api/exception", (req, res) -> {
             throw new RuntimeException("Test exception page");
         });
 
-        get("/halt", (req, res) -> {
-            halt(401, "Testing for halt");
-            return null;
-        });
+        post("/login", ((request, response) -> userController.login(gson.fromJson(request.body(), User.class), request.session())), gson::toJson);
+
+        post("/logout", ((request, response) -> userController.logout(request.session())));
+
+        return this;
     }
 
 }

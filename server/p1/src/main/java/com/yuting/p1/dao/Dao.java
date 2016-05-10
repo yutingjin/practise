@@ -11,14 +11,20 @@ import org.sql2o.Sql2o;
  */
 public class Dao {
 
-    public Sql2o getConnection() {
+    private Sql2o sql2o;
+
+    public Dao() {
+        this.sql2o = this.newConnection();
+    }
+
+    public Sql2o newConnection() {
         return new Sql2o(DBConstants.USER_DATABASE_URL, DBConstants.USER, DBConstants.PASSWORD);
     }
 
     public User getUser(String id) {
         String sql = "select uuid, mobile, password from user where uuid = :id";
-        try (Connection con = this.getConnection().open()) {
-            return con.createQuery(sql).addParameter("id", id).executeAndFetchFirst(User.class);
+        try (Connection con = this.sql2o.open()) {
+            return con.createQuery(sql).addParameter("id", id).addColumnMapping("uuid", "userId").executeAndFetchFirst(User.class);
         }
     }
 

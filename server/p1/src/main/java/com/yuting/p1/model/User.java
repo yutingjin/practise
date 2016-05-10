@@ -6,18 +6,18 @@ package com.yuting.p1.model;
  */
 public class User {
 
-    private String uuid;
+    private String userId;
 
     private String mobile;
 
     private String password;
 
-    public String getUuid() {
-        return uuid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getMobile() {
