@@ -1,9 +1,8 @@
-package com.yuting.p1;
+package com.yuting.p1.dao;
 
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.yuting.p1.constants.Constants;
-import com.yuting.p1.dao.Dao;
 import com.yuting.p1.model.User;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,12 +12,15 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
 import java.util.List;
+import java.util.UUID;
 
-public class DatabaseTest {
+public class UserDaoTest {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     private Gson gson = new Gson();
+
+    private final Dao dao = new Dao();
 
     @Test
     public void testLoadAllUsers() {
@@ -36,9 +38,20 @@ public class DatabaseTest {
     @Test
     public void testGetUser() {
         String id = "60000001";
-        User user = new Dao().getUser(id);
+        User user = dao.getUser(id);
         Assert.assertNotNull(user);
-        System.out.printf("%s", gson.toJson(user));
+        logger.debug(gson.toJson(user));
         Assert.assertEquals(user.getUserId(), id);
+    }
+
+    @Test
+    public void testAddUser() {
+        User user = new User();
+        user.setUserId(UUID.randomUUID().toString());
+        user.setMobile("12312412412");
+        user.setPassword("123456");
+        user.setStatus("0");
+
+        dao.addUser(user);
     }
 }
