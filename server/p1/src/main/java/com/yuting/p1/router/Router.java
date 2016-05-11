@@ -35,15 +35,14 @@ public class Router {
     }
 
     public Router initAfter() {
-        after((request, response) -> logger.info("After filter %s", request.toString()));
+        after((request, response) -> logger.info("After filter {}", request.toString()));
 
         return this;
     }
 
     public Router handleException() {
-        logger.debug("debug");
 
-        exception(Exception.class, ((exception, request, response) -> exception.printStackTrace()));
+        exception(Exception.class, ((exception, request, response) -> logger.error("Meet exception: ", exception)));
 
         return this;
     }

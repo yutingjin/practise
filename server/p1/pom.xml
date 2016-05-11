@@ -58,8 +58,8 @@
         <!-- Resolve the warning "Failed to load class org.slf4j.impl.StaticLoggerBinder" -->
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-nop</artifactId>
-            <version>1.7.13</version>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.21</version>
         </dependency>
         <!-- Database migration -->
         <dependency>
