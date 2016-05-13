@@ -21,6 +21,8 @@ public class Router {
 
     private UserController userController = new UserController();
 
+    private final static String JSON_ACCEPT_TYPE = "application/json";
+
     public Router initBefore() {
         // enable the spark java error page
         //spark.debug.DebugScreen.enableDebugScreen();
@@ -49,15 +51,15 @@ public class Router {
 
     public Router route() {
 
-        get("/api/hello", (req, res) -> req.session().attribute("userId"), gson::toJson);
+        get("/api/hello", JSON_ACCEPT_TYPE, (req, res) -> req.session().attribute("userId"), gson::toJson);
 
         get("/api/exception", (req, res) -> {
             throw new RuntimeException("Test exception page");
         });
 
-        post("/login", ((request, response) -> userController.login(gson.fromJson(request.body(), User.class), request.session())), gson::toJson);
+        post("/login", JSON_ACCEPT_TYPE, ((request, response) -> userController.login(gson.fromJson(request.body(), User.class), request.session())), gson::toJson);
 
-        post("/logout", ((request, response) -> userController.logout(request.session())));
+        post("/logout", JSON_ACCEPT_TYPE, ((request, response) -> userController.logout(request.session())));
 
         return this;
     }
