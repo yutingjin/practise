@@ -49,7 +49,7 @@ public class Router {
         return this;
     }
 
-    public Router route() {
+    public void route() {
 
         get("/api/hello", JSON_ACCEPT_TYPE, (req, res) -> req.session().attribute("userId"), gson::toJson);
 
@@ -61,7 +61,6 @@ public class Router {
 
         post("/logout", JSON_ACCEPT_TYPE, ((request, response) -> userController.logout(request.session())));
 
-        return this;
     }
 
 }
