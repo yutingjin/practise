@@ -7,6 +7,7 @@ import App from '../views/app';
 import Home from '../views/home';
 import History from '../views/history';
 import Records from '../views/record';
+import RecordDetails from '../views/record/detail';
 import About from '../views/about';
 import Info from '../views/info';
 import Me from '../views/me';
@@ -84,6 +85,7 @@ class AppRouter extends React.Component {
                 <Route name="info" component={Info} type="push" title="个人资料"/>
                 <Route name="appointment" component={About} type="push" title="预约"/>
                 <Route name="medicalRecord" component={About} type="push" title="病历"/>
+                <Route name="recordDetails" component={RecordDetails} type="push" title="病历"/>
 
             </ReduxRouter>
         )

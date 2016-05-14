@@ -4,7 +4,6 @@ export default class extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={[styles.line, styles.prefix]} />
                 <Text style={styles.title}>{this.props.title}</Text>
                 <View style={[styles.line, styles.suffix]} />
             </View>
@@ -26,15 +25,13 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
 
-    prefix: {
-        marginRight: 30
-    },
-
     suffix: {
-        marginLeft: 30
+        marginRight: 20,
+        marginLeft: 20
     },
 
     title: {
+        marginLeft: 10,
         fontSize: 16,
         textAlign: 'center',
         color: '#888'

@@ -25,7 +25,8 @@ class App extends Component {
 //                this.handleConnectivityChange(connected);
 //            }
 //        );
-        setTimeout(Actions.main, 2000);
+        //setTimeout(Actions.main, 2000);
+        setTimeout(Actions.recordDetails, 2000);
     }
 
     componentDidUpdate() {
@@ -41,12 +42,13 @@ class App extends Component {
     }
 
     render() {
-        return (
-            <Page>
-                <Image source={require('./splash.png')} style={[styles.container, {width: width, height: height}]}>
-                </Image>
-            </Page>
-        )
+        // return (
+        //     <Page>
+        //         <Image source={require('./splash.png')} style={[styles.container, {width: width, height: height}]}>
+        //         </Image>
+        //     </Page>
+        // )
+        return <Page/>
     }
 }
 
