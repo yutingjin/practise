@@ -4,6 +4,7 @@ import { View, Text, TextInput, StyleSheet, TouchableOpacity, Dimensions } from 
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 //import { Select, Option, OptionList, updatePosition } from 'react-native-dropdown';
+import DropDown, { Select, Option, OptionList } from 'react-native-selectme';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Message from '../../components/message';
 import variables from '../../components/global/variables';
@@ -14,13 +15,6 @@ import Page from '../../components/page';
 // import { order, reportLoss } from '../../actions/order';
 import { errorCodes, orderStatuses, paymentStatuses, orderSteps } from '../../actions/action_code';
 import actionTypes from '../../actions/action_types';
-
-
-import DropDown, {
-  Select,
-  Option,
-  OptionList,
-} from 'react-native-selectme';
 
 function mapStateToProps(state) {
     return {
@@ -144,7 +138,7 @@ var RecordDetails = React.createClass({
                 </Select>
 
                 <PageDivider title={'问题描述'} />
-                <View style={{backgroundColor:'#fff', marginBottom:30}}>
+                <View style={{backgroundColor:'#fff', marginBottom:20}}>
                     <TextInput multiline={true} style={styles.textInput}
                                placeholder={'   请详细描述您要咨询的问题'}/>
                 </View>
@@ -154,22 +148,24 @@ var RecordDetails = React.createClass({
             </View>
 
             <PageDivider title={'用药情况'} />
-            <View style={{backgroundColor:'#fff', marginBottom:30}}>
+            <View style={{backgroundColor:'#fff', marginBottom:20}}>
                 <TextInput multiline={true} style={styles.textInput}
                            placeholder={'   请详细列出您正在使用的药物'}/>
             </View>
 
-            <Message icon={icon} iconColor={iconColor}>{title}</Message>
+            <PageDivider title={'照片'} />
+            <View style={{backgroundColor:'#fff', marginBottom:20, width:windowWidth-40, height:60, flex:1, alignItems: 'center'}}>
+                <Icon name={'ios-camera'} size={40} color={'#009af1'} />
+            </View>
+
+
+            <Button style={{marginTop: 15}} type="bordered" onPress={()=>{console.log('press save button')}}>
+                提交
+            </Button>
 
           </View>
         </View>
     },
-
-    // render:function(){
-    //     return <View>
-    //         {this.renderSelect()}
-    //     </View>
-    // },
 
     _canada:function(state) {
       this.setState({

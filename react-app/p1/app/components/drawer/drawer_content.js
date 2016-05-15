@@ -31,6 +31,11 @@ class DrawerContent extends Component {
         //
     }
 
+    consult() {
+        Actions.consult();
+        this.context.drawer.close();
+    }
+
     me() {
         Actions.me();
         this.context.drawer.close()
@@ -62,6 +67,14 @@ class DrawerContent extends Component {
                             <Image source={require('./images/home.png')} style={styles.drawerItemIcon} />
                             <View style={[styles.drawerItemTitle, styles.aboutTitle]}>
                                 <Text style={styles.titleText}>我的</Text>
+                            </View>
+                        </View>
+                    </TouchableHighlight>
+                    <TouchableHighlight onPress={this.consult.bind(this)} underlayColor='#E2E2E2'>
+                        <View style={[styles.drawerItem, styles.about]}>
+                            <Image source={require('./images/history.png')} style={styles.drawerItemIcon} />
+                            <View style={[styles.drawerItemTitle, styles.aboutTitle]}>
+                                <Text style={styles.titleText}>图文咨询</Text>
                             </View>
                         </View>
                     </TouchableHighlight>
