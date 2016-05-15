@@ -36,8 +36,7 @@ var Consult = React.createClass({
         return {
             loading: false,
             error: {},
-            canada: '',
-            usa: ''
+            doctor: ''
         };
     },
 
@@ -57,11 +56,11 @@ var Consult = React.createClass({
     },
 
     onSelectDoctor:function(option) {
-      console.log(option)
-      this.setState({
-        ...this.state,
-        usa: option
-      });
+        console.log(option)
+        this.setState({
+          ...this.state,
+          doctor: option
+        });
     },
 
     render:function(){
@@ -70,10 +69,9 @@ var Consult = React.createClass({
         return <View style={styles.detailContainer}>
           <View style={[styles.detailContent]}>
 
-
             <PageDivider title={'选择医生'} />
             <View>
-                <Select width={windowWidth - 40} ref="SELECT1"
+                <Select width={windowWidth - 40}
                         defaultValue="华佗"
                         optionListRef={this._getOptionList}
                         onSelect={this.onSelectDoctor}
@@ -84,9 +82,8 @@ var Consult = React.createClass({
                 </Select>
 
                 <PageDivider title={'问题描述'} />
-                <View style={{backgroundColor:'#fff', marginBottom:20}}>
-                    <TextInput multiline={true} style={styles.textInput}
-                               placeholder={'   请详细描述您要咨询的问题'}/>
+                <View style={styles.textInputWrapper}>
+                    <TextInput multiline={true} style={styles.textInput} placeholder={'请详细描述您要咨询的问题'}/>
                 </View>
 
                 <OptionList ref="OPTIONLIST" overlayStyles={styles.overlay}/>
@@ -94,16 +91,14 @@ var Consult = React.createClass({
             </View>
 
             <PageDivider title={'用药情况'} />
-            <View style={{backgroundColor:'#fff', marginBottom:20}}>
-                <TextInput multiline={true} style={styles.textInput}
-                           placeholder={'   请详细列出您正在使用的药物'}/>
+            <View style={styles.textInputWrapper}>
+                <TextInput multiline={true} style={styles.textInput} placeholder={'请详细列出您正在使用的药物'}/>
             </View>
 
             <PageDivider title={'局部照片'} />
             <View style={{backgroundColor:'#fff', marginBottom:20, width:windowWidth-40, height:60, flex:1, alignItems: 'center'}}>
                 <Icon name={'ios-camera'} size={40} color={'#009af1'} />
             </View>
-
 
             <Button style={{marginTop: 15}} type="bordered" onPress={()=>{console.log('press save button')}}>
                 提交
@@ -114,12 +109,6 @@ var Consult = React.createClass({
     },
 
 })
-
-/**
-{mockData.map((item) => {
-    return <Option>{item.name}</Option>
-})}
-*/
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -151,15 +140,10 @@ const styles = StyleSheet.create({
           paddingBottom: 14
       },
 
-      dropDown: {
-          // flex: 1,
-          // justifyContent: 'center',
-          // alignItems: 'center'
-      },
-
-      dropDownOption: {
-          // backgroundColor: '#fff',
-          backgroundColor: 'yellow',
+      textInputWrapper: {
+          backgroundColor:'#fff',
+          marginBottom:20,
+          borderRadius: 10
       },
 
       textInput: {
@@ -169,7 +153,9 @@ const styles = StyleSheet.create({
           // width: windowWidth - 20,
           height: 80,
           borderColor: '#EBEEF0',
-          borderWidth: 1
+          borderWidth: 1,
+          // borderRadius: 5
+          padding: 10
       },
 
       overlay: {
