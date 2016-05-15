@@ -3,7 +3,6 @@ import React from 'react'
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-//import { Select, Option, OptionList, updatePosition } from 'react-native-dropdown';
 import DropDown, { Select, Option, OptionList } from 'react-native-selectme';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Message from '../../components/message';
@@ -12,9 +11,7 @@ import localization from '../../components/localization/localization';
 import PageDivider from '../../components/page_divider';
 import Button from '../../components/button'
 import Page from '../../components/page';
-// import { order, reportLoss } from '../../actions/order';
-import { errorCodes, orderStatuses, paymentStatuses, orderSteps } from '../../actions/action_code';
-import actionTypes from '../../actions/action_types';
+//import actionTypes from '../../actions/action_types';
 
 function mapStateToProps(state) {
     return {
@@ -26,14 +23,14 @@ function mapStateToProps(state) {
 }
 
 const mockData = [
-    { id:1, name:"option1", title:"title1" },
-    { id:2, name:"option2", title:"title2" },
-    { id:3, name:"option3", title:"title3" },
-    { id:4, name:"option4", title:"title4" },
-    { id:5, name:"option5", title:"title5" },
+    { id:1, name:"李时珍", title:"title1" },
+    { id:2, name:"扁鹊", title:"title2" },
+    { id:3, name:"华佗", title:"title3" },
+    { id:4, name:"谁谁谁", title:"title4" },
+    { id:5, name:"小花", title:"title5" },
 ]
 
-var RecordDetails = React.createClass({
+var Consult = React.createClass({
 
     getInitialState:function(){
         return {
@@ -46,9 +43,6 @@ var RecordDetails = React.createClass({
 
     componentDidMount:function() {
         // load details
-        // updatePosition(this.refs['SELECT1']);
-        // updatePosition(this.refs['SELECT2']);
-        // updatePosition(this.refs['OPTIONLIST']);
     },
 
     _getOptionList:function() {
@@ -62,64 +56,16 @@ var RecordDetails = React.createClass({
         })
     },
 
-    editRecord:function(){
-        // TODO
-        console.log("edit record")
-    },
-
-    onSelect:function(options){
-        console.log(options)
-    },
-
-    renderFull:function() {
-        const order = this.props.order;
-        let title = <Text style={styles.text}>{localization.OK}</Text>;
-        let icon = 'ios-checkmark';
-        let iconColor = variables.$green;
-
-        console.log("Window width: ", windowWidth)
-        return (
-            <View style={styles.detailContainer}>
-                <View style={[styles.detailContent]}>
-                    <Message icon={icon} iconColor={iconColor}>{title}</Message>
-                    <PageDivider title={localization.DETAIL} />
-                    <View style={{backgroundColor:'#fff', marginBottom:30}}>
-                        <TextInput multiline={true} style={styles.textInput}/>
-                    </View>
-
-                    <PageDivider title={localization.DETAIL} />
-                    <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                        <Select width={windowWidth - 40} ref="SELECT1" defaultValue="Select an option ..."
-                                optionListRef={this._getOptionList}
-                                onSelect={this._canada}>
-                            {mockData.map((item) => {
-                                return <Option>{item.name}</Option>
-                            })}
-                        </Select>
-
-                        <Text>Selected Canadas province: {this.state.canada}</Text>
-
-                        <OptionList ref="OPTIONLIST"/>
-                    </View>
-
-                    <PageDivider title={localization.DETAIL} />
-                    <View style={{backgroundColor:'#fff', marginBottom:30}}>
-                        <TextInput multiline={true} style={styles.textInput}/>
-                    </View>
-                </View>
-                <View style={styles.detailFooter}>
-                    <Button style={{marginTop: 15}} type="bordered" onPress={this.editRecord}>
-                        Footer Button
-                    </Button>
-                </View>
-            </View>
-        )
+    onSelectDoctor:function(option) {
+      console.log(option)
+      this.setState({
+        ...this.state,
+        usa: option
+      });
     },
 
     render:function(){
-        let title = <Text style={styles.text}>{localization.OK}</Text>;
-        let icon = 'ios-checkmark';
-        let iconColor = variables.$green;
+        console.log("Window width: ", windowWidth)
 
         return <View style={styles.detailContainer}>
           <View style={[styles.detailContent]}>
@@ -130,11 +76,11 @@ var RecordDetails = React.createClass({
                 <Select width={windowWidth - 40} ref="SELECT1"
                         defaultValue="华佗"
                         optionListRef={this._getOptionList}
-                        onSelect={this._canada}
+                        onSelect={this.onSelectDoctor}
                         style={{backgroundColor:'#fff', marginBottom:20}}>
-                  <Option>华佗</Option>
-                  <Option>扁鹊</Option>
-                  <Option>李时珍</Option>
+                    {mockData.map((item) => {
+                        return <Option value={item}>{item.name}</Option>
+                    })}
                 </Select>
 
                 <PageDivider title={'问题描述'} />
@@ -153,7 +99,7 @@ var RecordDetails = React.createClass({
                            placeholder={'   请详细列出您正在使用的药物'}/>
             </View>
 
-            <PageDivider title={'照片'} />
+            <PageDivider title={'局部照片'} />
             <View style={{backgroundColor:'#fff', marginBottom:20, width:windowWidth-40, height:60, flex:1, alignItems: 'center'}}>
                 <Icon name={'ios-camera'} size={40} color={'#009af1'} />
             </View>
@@ -165,13 +111,6 @@ var RecordDetails = React.createClass({
 
           </View>
         </View>
-    },
-
-    _canada:function(state) {
-      this.setState({
-        ...this.state,
-        usa: state
-      });
     },
 
 })
@@ -245,4 +184,4 @@ const styles = StyleSheet.create({
       }
 })
 
-export default connect(mapStateToProps)(RecordDetails);
+export default connect(mapStateToProps)(Consult);
