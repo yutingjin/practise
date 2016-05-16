@@ -9,6 +9,7 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -54,6 +55,19 @@ public class Dao {
             logger.debug("Get key {}", key);
         }
         return id;
+    }
+
+    public List<ConsultRecord> getUserConsultRecords(String userId) {
+        String sql = "select * from consult_record where user_id = :userId";
+        try (Connection con = this.sql2o.open()) {
+            return con.createQuery(sql).addParameter("userId", userId)
+                    .addColumnMapping("uuid", "id")
+                    .addColumnMapping("user_id", "userId")
+                    .addColumnMapping("doctor_id", "doctorId")
+                    .addColumnMapping("create_time", "createTime")
+                    .addColumnMapping("update_time", "updateTime")
+                    .executeAndFetch(ConsultRecord.class);
+        }
     }
 
     public ConsultRecord getConsultRecord(String id) {

@@ -2,6 +2,7 @@ package com.yuting.p1.controller;
 
 import com.yuting.p1.dao.Dao;
 import com.yuting.p1.model.User;
+import com.yuting.p1.utils.SessionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spark.Session;
@@ -30,23 +31,10 @@ public class UserController {
     }
 
     public boolean logout(Session session) {
-        String userId = "";
-        Object obj = session.attribute("userId");
-        if (obj != null && obj instanceof String) {
-            userId = (String) obj;
-        }
+        String userId = SessionUtils.getCurrentUserId(session);
         logger.debug("User[{}] logout.", userId);
-
         session.invalidate();
         return true;
     }
 
-    public String getCurrentUserId(Session session) {
-        Object userId = session.attribute("userId");
-        if (userId != null && userId instanceof String) {
-            logger.debug("Get Current user id: {}", userId);
-            return (String) userId;
-        }
-        return null;
-    }
 }

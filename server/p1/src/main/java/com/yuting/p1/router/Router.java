@@ -1,6 +1,7 @@
 package com.yuting.p1.router;
 
 import com.google.gson.Gson;
+import com.yuting.p1.controller.ConsultController;
 import com.yuting.p1.controller.UserController;
 import com.yuting.p1.model.User;
 import org.eclipse.jetty.http.HttpStatus;
@@ -20,6 +21,8 @@ public class Router {
     private Gson gson = new Gson();
 
     private UserController userController = new UserController();
+
+    private ConsultController consultController = new ConsultController();
 
     private final static String JSON_ACCEPT_TYPE = "application/json";
 
@@ -56,6 +59,8 @@ public class Router {
         get("/api/exception", (req, res) -> {
             throw new RuntimeException("Test exception page");
         });
+
+        get("/api/consult_records", JSON_ACCEPT_TYPE, (req, res) -> consultController.getConsultRecords(req.session()), gson::toJson);
 
         post("/login", JSON_ACCEPT_TYPE, ((request, response) -> userController.login(gson.fromJson(request.body(), User.class), request.session())), gson::toJson);
 
