@@ -6,11 +6,22 @@ import java.util.Date;
  * p1
  * Created by jinyuting on 5/10/16.
  */
+@SuppressWarnings("unused")
 public class User {
 
-    private String userId;
+    private String id;
 
     private String mobile;
+
+    private String email;
+
+    private String name;
+
+    private String avatar;
+
+    private int gender;
+
+    private int type;
 
     private String password;
 
@@ -19,6 +30,14 @@ public class User {
     private Date createTime;
 
     private Date updateTime;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getStatus() {
         return status;
@@ -44,14 +63,6 @@ public class User {
         this.updateTime = updateTime;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
     public String getMobile() {
         return mobile;
     }
@@ -66,5 +77,45 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

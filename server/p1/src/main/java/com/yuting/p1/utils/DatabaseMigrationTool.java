@@ -28,7 +28,12 @@ public class DatabaseMigrationTool {
         this.flyway.repair();
     }
 
+    /*
+        Caution! Clean and migrate db!
+     */
     public static void main(String... args) {
-        new DatabaseMigrationTool().migrate();
+        DatabaseMigrationTool tool = new DatabaseMigrationTool();
+        tool.clean();
+        tool.migrate();
     }
 }

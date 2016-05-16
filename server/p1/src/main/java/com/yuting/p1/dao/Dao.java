@@ -1,6 +1,7 @@
 package com.yuting.p1.dao;
 
 import com.yuting.p1.constants.Constants;
+import com.yuting.p1.model.ConsultRecord;
 import com.yuting.p1.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +9,7 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * p1
@@ -23,32 +25,62 @@ public class Dao {
         this.sql2o = this.newConnection();
     }
 
-    public Sql2o newConnection() {
+    private Sql2o newConnection() {
         return new Sql2o(Constants.DATABASE_URL, Constants.USER, Constants.PASSWORD);
     }
 
     public User getUser(String id) {
-        String sql = "select uuid, mobile, password from user where uuid = :id";
+        String sql = "select * from user where uuid = :id";
         try (Connection con = this.sql2o.open()) {
-            return con.createQuery(sql).addParameter("id", id).addColumnMapping("uuid", "userId").executeAndFetchFirst(User.class);
+            return con.createQuery(sql).addParameter("id", id)
+                    .addColumnMapping("uuid", "id")
+                    .addColumnMapping("create_time", "createTime")
+                    .addColumnMapping("update_time", "updateTime")
+                    .executeAndFetchFirst(User.class);
         }
     }
 
-    public void addUser(User user) {
+    public String addUser(User user) {
         String sql = "INSERT INTO user ( uuid, mobile, status, password, create_time, update_time)" +
-                " VALUES (:userId, :mobile, :status, :password, :createTime, :updateTime)";
+                " VALUES (:id, :mobile, :status, :password, :createTime, :updateTime)";
+        String id = UUID.randomUUID().toString();
         try (Connection con = this.sql2o.open()) {
-            Object key = con.createQuery(sql, true)
-                    .addParameter("userId", user.getUserId())
-                    .addParameter("mobile", user.getMobile())
-                    .addParameter("status", user.getStatus())
-                    .addParameter("password", user.getPassword())
+            Object key = con.createQuery(sql, true).bind(user)
+                    .addParameter("id", id)
                     .addParameter("createTime", new Date().getTime())
                     .addParameter("updateTime", new Date().getTime())
                     .executeUpdate()
                     .getKey();
             logger.debug("Get key {}", key);
         }
+        return id;
+    }
+
+    public ConsultRecord getConsultRecord(String id) {
+        String sql = "select * from consult_record where uuid = :id";
+        try (Connection con = this.sql2o.open()) {
+            return con.createQuery(sql).addParameter("id", id)
+                    .addColumnMapping("uuid", "id")
+                    .addColumnMapping("user_id", "userId")
+                    .addColumnMapping("doctor_id", "doctorId")
+                    .addColumnMapping("create_time", "createTime")
+                    .addColumnMapping("update_time", "updateTime")
+                    .executeAndFetchFirst(ConsultRecord.class);
+        }
+    }
+
+    public String addConsultRecord(ConsultRecord record) {
+        String sql = "insert into consult_record (uuid, user_id, title, status, doctor_id, description, medicines, create_time, update_time)" +
+                " values (:id, :userId, :title, :status, :doctorId, :description, :medicines, :createTime, :updateTime)";
+        String id = UUID.randomUUID().toString();
+        try (Connection con = this.sql2o.open()) {
+            con.createQuery(sql).bind(record)
+                    .addParameter("id", id)
+                    .addParameter("createTime", new Date().getTime())
+                    .addParameter("updateTime", new Date().getTime())
+                    .executeUpdate();
+        }
+        return id;
     }
 
 }

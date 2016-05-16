@@ -18,11 +18,11 @@ public class UserController {
 
     public boolean login(User u, Session session) {
         if (u != null) {
-            User user = dao.getUser(u.getUserId());
+            User user = dao.getUser(u.getId());
             if (user != null) {
-                logger.debug("User[{}] login.", user.getUserId());
+                logger.debug("User[{}] login.", user.getId());
                 // TODO verify password
-                session.attribute("userId", user.getUserId());
+                session.attribute("userId", user.getId());
                 return true;
             }
         }
