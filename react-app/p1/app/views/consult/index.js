@@ -75,19 +75,19 @@ var Consult = React.createClass({
                         defaultValue="华佗"
                         optionListRef={this._getOptionList}
                         onSelect={this.onSelectDoctor}
-                        style={{backgroundColor:'#fff', marginBottom:20}}>
+                        style={styles.textInputWrapper}>
                     {mockData.map((item) => {
                         return <Option value={item}>{item.name}</Option>
                     })}
                 </Select>
 
+                /* The dropdown layout need to be over the next component, so keey the option list at last */
                 <PageDivider title={'问题描述'} />
                 <View style={styles.textInputWrapper}>
                     <TextInput multiline={true} style={styles.textInput} placeholder={'请详细描述您要咨询的问题'}/>
                 </View>
 
                 <OptionList ref="OPTIONLIST" overlayStyles={styles.overlay}/>
-
             </View>
 
             <PageDivider title={'用药情况'} />
@@ -96,7 +96,7 @@ var Consult = React.createClass({
             </View>
 
             <PageDivider title={'局部照片'} />
-            <View style={{backgroundColor:'#fff', marginBottom:20, width:windowWidth-40, height:60, flex:1, alignItems: 'center'}}>
+            <View style={[styles.textInputWrapper, styles.textInput]}>
                 <Icon name={'ios-camera'} size={40} color={'#009af1'} />
             </View>
 
@@ -150,11 +150,9 @@ const styles = StyleSheet.create({
           flex: 1,
           justifyContent: 'center',
           alignItems: 'center',
-          // width: windowWidth - 20,
           height: 80,
           borderColor: '#EBEEF0',
           borderWidth: 1,
-          // borderRadius: 5
           padding: 10
       },
 
