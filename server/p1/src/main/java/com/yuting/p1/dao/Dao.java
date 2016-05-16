@@ -26,7 +26,7 @@ public class Dao {
         this.sql2o = this.newConnection();
     }
 
-    private Sql2o newConnection() {
+    public Sql2o newConnection() {
         return new Sql2o(Constants.DATABASE_URL, Constants.USER, Constants.PASSWORD);
     }
 
@@ -83,16 +83,30 @@ public class Dao {
         }
     }
 
-    public String addConsultRecord(ConsultRecord record) {
-        String sql = "insert into consult_record (uuid, user_id, title, status, doctor_id, description, medicines, create_time, update_time)" +
+    /**
+     * Add a consult Record
+     *
+     * @param record     a data structure with consult record
+     * @param connection for the outer transaction
+     * @return Consult Record ID
+     */
+    public String addConsultRecord(ConsultRecord record, Connection... connection) {
+        final String sql = "insert into consult_record (uuid, user_id, title, status, doctor_id, description, medicines, create_time, update_time)" +
                 " values (:id, :userId, :title, :status, :doctorId, :description, :medicines, :createTime, :updateTime)";
-        String id = UUID.randomUUID().toString();
-        try (Connection con = this.sql2o.open()) {
-            con.createQuery(sql).bind(record)
-                    .addParameter("id", id)
-                    .addParameter("createTime", new Date().getTime())
-                    .addParameter("updateTime", new Date().getTime())
-                    .executeUpdate();
+        final String id = UUID.randomUUID().toString();
+
+        LambdaConnection execConn = con -> con.createQuery(sql).bind(record)
+                .addParameter("id", id)
+                .addParameter("createTime", new Date().getTime())
+                .addParameter("updateTime", new Date().getTime())
+                .executeUpdate();
+
+        if (connection == null || connection.length == 0) {
+            try (Connection con = this.sql2o.open()) {
+                execConn.execute(con);
+            }
+        } else {
+            execConn.execute(connection[0]);
         }
         return id;
     }
