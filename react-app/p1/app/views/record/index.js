@@ -6,13 +6,13 @@ import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import InfiniteScrollView from 'react-native-infinite-scroll-view';
 //import Loading from '../../components/loading';
-import RecordSection from '../../components/record_section';
+import RecordSection from './section';
 import ListView from '../../components/list_view';
 import Page from '../../components/page';
 import Card from '../../components/card';
 import { errorCodes, orderStatuses, paymentStatuses } from '../../actions/action_code';
 import styles from './styles';
-import recordList from './recordList'
+import mockData from './mockData'
 
 function mapStateToProps(state) {
     return {
@@ -53,12 +53,12 @@ var Records = React.createClass({
         return (
             <Page>
                 <ListView
-                    renderRow={this.renderRow.bind(this)}
+                    renderRow={this.renderRow}
                     renderScrollComponent={props => <InfiniteScrollView {...props} />}
-                    dataSource={recordList || []}
-                    onLoadMoreAsync={this.loadMore.bind(this)}
+                    dataSource={mockData || []}
+                    onLoadMoreAsync={this.loadMore}
                     isRefreshable={true}
-                    onRefresh={this.loadMore.bind(this, 0)}
+                    onRefresh={this.loadMore(0)}
                     renderFooter={() => {
                             // if (!!orderList && this.props.loading) {
                             //     return <Loading style={{padding: 14}} />
