@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
@@ -48,8 +48,8 @@ public class Dao {
         try (Connection con = this.sql2o.open()) {
             Object key = con.createQuery(sql, true).bind(user)
                     .addParameter("id", id)
-                    .addParameter("createTime", new Date().getTime())
-                    .addParameter("updateTime", new Date().getTime())
+                    .addParameter("createTime", Instant.now().getEpochSecond())
+                    .addParameter("updateTime", Instant.now().getEpochSecond())
                     .executeUpdate()
                     .getKey();
             logger.debug("Get key {}", key);
@@ -97,8 +97,8 @@ public class Dao {
 
         LambdaConnection execConn = con -> con.createQuery(sql).bind(record)
                 .addParameter("id", id)
-                .addParameter("createTime", new Date().getTime())
-                .addParameter("updateTime", new Date().getTime())
+                .addParameter("createTime", Instant.now().getEpochSecond())
+                .addParameter("updateTime", Instant.now().getEpochSecond())
                 .executeUpdate();
 
         if (connection == null || connection.length == 0) {

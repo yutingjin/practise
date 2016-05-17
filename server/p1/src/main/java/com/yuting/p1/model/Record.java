@@ -1,7 +1,5 @@
 package com.yuting.p1.model;
 
-import java.util.Date;
-
 /**
  * p1
  * Created by jinyuting on 5/11/16.
@@ -21,9 +19,9 @@ public abstract class Record {
 
     private String description;
 
-    private Date createTime;
+    private int createTime;
 
-    private Date updateTime;
+    private int updateTime;
 
     public String getId() {
         return id;
@@ -73,19 +71,19 @@ public abstract class Record {
         this.description = description;
     }
 
-    public Date getCreateTime() {
+    public int getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(int createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public int getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(int updateTime) {
         this.updateTime = updateTime;
     }
 }
