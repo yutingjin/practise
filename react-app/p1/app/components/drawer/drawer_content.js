@@ -1,6 +1,10 @@
-import React, { PropTypes, Component, StyleSheet, View, ListView, Text, Image, TouchableHighlight, TouchableOpacity, Alert } from 'react-native';
+import React from 'react';
+import { PropTypes, Component, StyleSheet, View, ListView, Text, TouchableHighlight, TouchableOpacity, Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
+
+const menu_icon_size = 30
 
 class DrawerContent extends Component {
 
@@ -53,7 +57,7 @@ class DrawerContent extends Component {
                 <View style={styles.drawerHeader}>
                     <TouchableOpacity onPress={()=>{}}>
                         <View style={styles.drawerItem}>
-                            <Image source={require('./images/login.png')} style={styles.drawerItemIcon} />
+                            <Icon name={'android-person'} size={40} color={'#009af1'} style={styles.drawerItemIcon} />
                             <View style={[styles.drawerItemTitle, styles.drawerHeaderTitle]}>
                                 <Text style={[styles.titleText, styles.drawerHeadText]}>登录</Text>
                             </View>
@@ -64,7 +68,7 @@ class DrawerContent extends Component {
                 <View style={styles.drawerList}>
                     <TouchableHighlight onPress={this.me.bind(this)} underlayColor='#E2E2E2'>
                         <View style={[styles.drawerItem, styles.about]}>
-                            <Image source={require('./images/home.png')} style={styles.drawerItemIcon} />
+                            <Icon name={'ios-home'} size={menu_icon_size} color={'#009af1'} style={styles.drawerItemIcon} />
                             <View style={[styles.drawerItemTitle, styles.aboutTitle]}>
                                 <Text style={styles.titleText}>我的</Text>
                             </View>
@@ -72,7 +76,7 @@ class DrawerContent extends Component {
                     </TouchableHighlight>
                     <TouchableHighlight onPress={this.consult.bind(this)} underlayColor='#E2E2E2'>
                         <View style={[styles.drawerItem, styles.about]}>
-                            <Image source={require('./images/history.png')} style={styles.drawerItemIcon} />
+                            <Icon name={'ios-medkit'} size={menu_icon_size} color={'#009af1'} style={styles.drawerItemIcon} />
                             <View style={[styles.drawerItemTitle, styles.aboutTitle]}>
                                 <Text style={styles.titleText}>图文咨询</Text>
                             </View>
@@ -80,7 +84,7 @@ class DrawerContent extends Component {
                     </TouchableHighlight>
                     <TouchableHighlight onPress={this.record.bind(this)} underlayColor='#E2E2E2'>
                         <View style={[styles.drawerItem, styles.about]}>
-                            <Image source={require('./images/history.png')} style={styles.drawerItemIcon} />
+                            <Icon name={'ios-paper'} size={menu_icon_size} color={'#009af1'} style={styles.drawerItemIcon} />
                             <View style={[styles.drawerItemTitle, styles.aboutTitle]}>
                                 <Text style={styles.titleText}>电子病历</Text>
                             </View>
@@ -88,7 +92,7 @@ class DrawerContent extends Component {
                     </TouchableHighlight>
                     <TouchableHighlight onPress={this.history.bind(this)} underlayColor='#E2E2E2'>
                         <View style={[styles.drawerItem, styles.about]}>
-                            <Image source={require('./images/history.png')} style={styles.drawerItemIcon} />
+                            <Icon name={'ios-list'} size={menu_icon_size} color={'#009af1'} style={styles.drawerItemIcon} />
                             <View style={[styles.drawerItemTitle, styles.aboutTitle]}>
                                 <Text style={styles.titleText}>预约记录</Text>
                             </View>
@@ -96,7 +100,7 @@ class DrawerContent extends Component {
                     </TouchableHighlight>
                     <TouchableHighlight onPress={this.message.bind(this)} underlayColor='#E2E2E2'>
                         <View style={[styles.drawerItem, styles.about]}>
-                            <Image source={require('../../images/icon_message_pre.png')} style={styles.drawerItemIcon} />
+                            <Icon name={'chatbox-working'} size={menu_icon_size} color={'#009af1'} style={styles.drawerItemIcon} />
                             <View style={[styles.drawerItemTitle, styles.aboutTitle]}>
                                 <Text style={styles.titleText}>消息</Text>
                             </View>
@@ -104,16 +108,12 @@ class DrawerContent extends Component {
                     </TouchableHighlight>
                     <TouchableHighlight onPress={this.about.bind(this)} underlayColor='#E2E2E2'>
                         <View style={[styles.drawerItem, styles.about]}>
-                            <Image source={require('./images/help.png')} style={styles.drawerItemIcon} />
+                            <Icon name={'help-circled'} size={menu_icon_size} color={'#009af1'} style={styles.drawerItemIcon} />
                             <View style={[styles.drawerItemTitle, styles.aboutTitle]}>
                                 <Text style={styles.titleText}>帮助</Text>
                             </View>
                         </View>
                     </TouchableHighlight>
-                </View>
-
-                <View style={styles.drawerFooter}>
-                    <Image source={require('./images/about.png')} style={styles.drawerItemIcon} />
                 </View>
             </View>
         )

@@ -45,11 +45,11 @@ const styles = StyleSheet.create({
     },
     titleText: {
         color: "#333",
-        fontSize: 14
+        fontSize: 18
     },
     drawerItemIcon: {
-        marginLeft: 14,
-        marginRight: 12
+        marginLeft: 24,
+        marginRight: 16
     },
 
     drawerItemLogout: {

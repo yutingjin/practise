@@ -81,7 +81,7 @@ var Consult = React.createClass({
                     })}
                 </Select>
 
-                /* The dropdown layout need to be over the next component, so keey the option list at last */
+                {/* The dropdown layout need to be over the next component, so keey the option list at last */}
                 <PageDivider title={'问题描述'} />
                 <View style={styles.textInputWrapper}>
                     <TextInput multiline={true} style={styles.textInput} placeholder={'请详细描述您要咨询的问题'}/>
