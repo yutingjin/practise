@@ -2,6 +2,7 @@ package com.yuting.p1.router;
 
 import com.google.gson.Gson;
 import com.yuting.p1.controller.ConsultController;
+import com.yuting.p1.controller.UploadController;
 import com.yuting.p1.controller.UserController;
 import com.yuting.p1.model.User;
 import org.eclipse.jetty.http.HttpStatus;
@@ -23,6 +24,8 @@ public class Router {
     private UserController userController = new UserController();
 
     private ConsultController consultController = new ConsultController();
+
+    private UploadController uploadController = new UploadController();
 
     private final static String JSON_ACCEPT_TYPE = "application/json";
 
@@ -61,6 +64,9 @@ public class Router {
         });
 
         get("/api/consult_records", JSON_ACCEPT_TYPE, (req, res) -> consultController.getConsultRecords(req.session()), gson::toJson);
+
+        // TODO move upload into api path for the authorization, now only for development
+        post("upload", (req, res) -> uploadController.upload(req));
 
         post("/login", JSON_ACCEPT_TYPE, ((request, response) -> userController.login(gson.fromJson(request.body(), User.class), request.session())), gson::toJson);
 
