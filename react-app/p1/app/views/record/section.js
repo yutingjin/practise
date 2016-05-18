@@ -7,10 +7,14 @@ import localization from '../../components/localization/localization'
 
 export default class extends Component {
 
+    onPress() {
+        Actions.recordDetails();
+    }
+
     render() {
         const order = this.props.order;
         return (
-            <TouchableOpacity style={[styles.section, this.props.style]} onPress={this.props.onPress}>
+            <TouchableOpacity style={[styles.section, this.props.style]} onPress={this.onPress}>
                 <View style={styles.container}>
                     <View style={[styles.horizontal, {flex:1}]}>
                         <Text style={[styles.text, styles.title]}>

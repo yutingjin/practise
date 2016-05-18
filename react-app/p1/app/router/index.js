@@ -7,6 +7,7 @@ import App from '../views/app';
 import Home from '../views/home';
 import History from '../views/history';
 import Records from '../views/record';
+import Record from '../views/record/details';
 import Consult from '../views/consult';
 import About from '../views/about';
 import Info from '../views/info';
@@ -80,6 +81,7 @@ class AppRouter extends React.Component {
                 </Route>
                 <Route name="history" component={History} type="push" title="预约记录"/>
                 <Route name="records" component={Records} type="push" title="病历"/>
+                <Route name="recordDetails" component={Record} type="push" title="病历详情"/>
                 <Route name="about" component={About} type="push" title="about"/>
                 <Route name="me" component={Me} type="push" title="我"/>
                 <Route name="info" component={Info} type="push" title="个人资料"/>
