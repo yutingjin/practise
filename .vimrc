@@ -17,6 +17,10 @@ Plugin 'ajh17/VimCompletesMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'majutsushi/tagbar'
+
+" plugins for JavaScripts
+Plugin 'mxw/vim-jsx'
+" Plugin 'pangloss/vim-javascript'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -142,3 +146,5 @@ au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>i <Plug>(go-info)
 
+" react JSX
+let g:jsx_ext_required = 0
